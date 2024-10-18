@@ -1,9 +1,9 @@
-import AuroraBackgroundDemo from "@/components/example/aurora-background-demo";
+import KitoHero from "@/components/examples/KitoHero";
 
 export default function Home() {
   return (
     <div className="">
-      <AuroraBackgroundDemo/>
+      <KitoHero/>
     </div>
   );
 }
