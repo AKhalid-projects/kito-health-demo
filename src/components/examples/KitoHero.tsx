@@ -22,7 +22,7 @@ export default function KitoHero() {
           Here for your child&apos;s health
         </div>
         <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
-        Kito App Demo v1.0.2
+        Kito App Demo v1.0.3
         </div>
         <Link href={'https://app.kitohealth.org'} className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
           Access Kito App
