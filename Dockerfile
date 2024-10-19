@@ -18,7 +18,7 @@ FROM base AS production
 WORKDIR /usr/src/app
 
 # Set environment to production
-ENV NODE_ENV=production
+ENV NODE_ENV=prod
 
 # Copy only necessary files from builder
 COPY --from=builder /usr/src/app/.next ./.next
@@ -38,7 +38,7 @@ CMD ["npm", "start"]
 
 # development stage
 FROM base AS development
-ENV NODE_ENV=development
+ENV NODE_ENV=dev
 RUN npm install 
 COPY . .
 CMD ["npm", "run" ,"dev"]
