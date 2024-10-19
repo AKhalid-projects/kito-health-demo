@@ -9,11 +9,13 @@ on:
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Set up Docker tag
+      run: echo "IMAGE_TAG=$(date +%s)" >> $GITHUB_ENV
 
     - name: Login Dockerhub
       env:
@@ -22,7 +24,12 @@ jobs:
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag kito-health-demo:$(date +%s)
+      run: docker build . --file Dockerfile --tag akhaled797/kito-health-demo:${{ env.IMAGE_TAG }}
 
     - name: Push to Dockerhub
-      run: docker push akhaled797/kito-health-demo:latest
+      run: docker push akhaled797/kito-health-demo:${{ env.IMAGE_TAG }}
+
+    - name: Tag and push the image as 'latest'
+      run: |
+        docker tag akhaled797/kito-health-demo:${{ env.IMAGE_TAG }} akhaled797/kito-health-demo:latest
+        docker push akhaled797/kito-health-demo:latest
